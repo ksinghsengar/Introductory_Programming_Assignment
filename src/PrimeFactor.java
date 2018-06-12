@@ -1,8 +1,6 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
-public class PrimeFactor {
+class PrimeFactor {
     public static void main(String[] args) {
         int n;
 
@@ -10,27 +8,27 @@ public class PrimeFactor {
         Scanner in = new Scanner(System.in);
         n = in.nextInt();
 
-        if(n >= 0){
+        if (n >= 0) {
             generate(n);
         }
-        if(n < 0){
+        if (n < 0) {
             System.out.println("!!Enter positive n only.");
         }
     }
 
     private static void generate(int n) {
-        List primeFactors = new ArrayList();
-        for(int i=2;i<=n;i++){
-            if(n%i == 0 ){
+        Set<Integer> primeFactors = new LinkedHashSet<>();
+        for (int i = 2; i <= n; i++) {
+            if (n % i == 0) {
                 int flag = 0;
-                for(int j=2;j<=i/2;j++){
-                     if(i%j == 0){
-                         flag = 1;
-                         break;
-                     }
+                for (int j = 2; j <= i / 2; j++) {
+                    if (i % j == 0) {
+                        flag = 1;
+                        break;
+                    }
                 }
-                if(flag == 0){
-                    primeFactors.add(new Integer(i));
+                if (flag == 0) {
+                    primeFactors.add(i);
                 }
             }
         }
